@@ -129,19 +129,72 @@ function displayFoliumMapInModal(mapHtml, districtName, hasCropData) {
             style.textContent = `
                 .folium-modal-popup {
                     padding: 20px !important;
+                    max-width: 95vw !important;
                 }
                 .folium-modal-content {
                     padding: 0 !important;
                     margin: 0 !important;
                     max-height: none !important;
                 }
+                #foliumMapContainer {
+                    width: 100% !important;
+                    height: 70vh !important;
+                    position: relative !important;
+                }
                 #foliumMapContainer iframe {
                     width: 100% !important;
                     height: 100% !important;
                     border: none !important;
                 }
+                #foliumMapContainer > div {
+                    width: 100% !important;
+                    height: 100% !important;
+                }
+                
+                /* Responsive adjustments for mobile */
+                @media (max-width: 768px) {
+                    .folium-modal-popup {
+                        padding: 10px !important;
+                        max-width: 98vw !important;
+                    }
+                    #foliumMapContainer {
+                        height: 60vh !important;
+                    }
+                }
+                
+                @media (max-width: 480px) {
+                    .folium-modal-popup {
+                        padding: 5px !important;
+                        max-width: 100vw !important;
+                    }
+                    #foliumMapContainer {
+                        height: 55vh !important;
+                    }
+                }
             `;
             document.head.appendChild(style);
+            
+            // Add window resize listener for the modal map
+            const resizeHandler = function() {
+                const mapContainer = document.getElementById('foliumMapContainer');
+                if (mapContainer) {
+                    const iframe = mapContainer.querySelector('iframe');
+                    if (iframe && iframe.contentWindow) {
+                        // Try to trigger map resize in the iframe
+                        try {
+                            iframe.contentWindow.postMessage({type: 'resize'}, '*');
+                        } catch (e) {
+                            console.log('Could not send resize message to iframe');
+                        }
+                    }
+                }
+            };
+            
+            // Add resize listener
+            window.addEventListener('resize', resizeHandler);
+            
+            // Initial resize after a short delay
+            setTimeout(resizeHandler, 500);
         }
     }).then((result) => {
         // If user clicked "Open in New Tab" (cancel button)

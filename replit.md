@@ -10,6 +10,54 @@ A web application for analyzing and classifying crops across India using satelli
 - Detailed metrics and actionable improvement suggestions
 - Non-technical language for model performance explanations
 
+## Recent Updates (November 10, 2025)
+
+### ✨ Fully Responsive Interactive Folium Map
+The interactive Folium map now features complete responsive design with automatic window resizing:
+
+**Automatic Map Resizing:**
+- Window resize handler with 250ms debounce calls `map.invalidateSize()` automatically
+- Handles browser window minimize/maximize perfectly
+- Supports mobile device orientation changes (portrait ↔ landscape)
+- Multiple fallback methods to detect and resize Leaflet map instances
+- PostMessage API for iframe resize communication in modal view
+
+**Responsive Layout:**
+- Map container uses `width: 100vw` and `height: 100vh` for full viewport coverage
+- Legend automatically scales: Desktop (300px) → Tablet (250px) → Mobile (200px)
+- Modal view heights adjust: Desktop (70vh) → Tablet (60vh) → Mobile (55vh)
+- All Leaflet controls (zoom, layers, fullscreen) remain accessible on all screen sizes
+- Clean full-screen display with `overflow: hidden` and absolute positioning
+
+**Technical Implementation:**
+- DOMContentLoaded and window.load event handlers for initialization
+- Resize and orientationchange event listeners with debouncing
+- Searches for map instances via `.folium-map` class and global variables
+- Console logging for debug and verification of resize events
+- Responsive CSS with media queries for mobile (≤480px) and tablet (≤768px)
+
+### 🎨 Main Application Responsive Design
+Complete mobile-first responsive enhancement across the entire application:
+
+**Collapsible Sidebar:**
+- Smart toggle button appears on screens ≤768px
+- Smooth slide-in/out animation (0.3s ease-in-out)
+- Auto-closes when clicking outside on mobile
+- Icon changes between Menu (☰) and Close (✕)
+
+**Dynamic Map Behavior:**
+- Main Leaflet map auto-resizes on window changes
+- 400ms debounced resize for smooth performance
+- Map controls repositioned for mobile devices
+- Touch-optimized for mobile interactions
+
+**Responsive Breakpoints:**
+- Extra Large (≥1200px): Full desktop layout
+- Large (769px-1024px): Optimized laptop/tablet view
+- Medium (481px-768px): Tablet with collapsible sidebar
+- Small (321px-480px): Mobile with full-width sidebar
+- Extra Small (≤360px): Compact mobile layout
+
 ## System Architecture
 
 ### UI/UX Decisions

@@ -103,6 +103,9 @@ class FoliumMapGenerator:
         minimap = plugins.MiniMap(toggle_display=True, position='bottomleft')
         m.add_child(minimap)
         
+        # Add responsive CSS and JavaScript for window resizing
+        self._add_responsive_features(m)
+        
         return m
     
     def _load_district_boundary(self, district_name: str) -> Optional[Dict]:
@@ -367,3 +370,153 @@ class FoliumMapGenerator:
         except Exception as e:
             print(f"Error getting map HTML: {e}")
             return ""
+    
+    def _add_responsive_features(self, m: folium.Map):
+        """Add responsive CSS and JavaScript to make the map resize dynamically"""
+        
+        # Responsive CSS for map container
+        responsive_css = '''
+        <style>
+            /* Make map container fully responsive */
+            html, body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+            
+            #map {
+                position: absolute !important;
+                top: 0;
+                left: 0;
+                width: 100% !important;
+                height: 100% !important;
+                z-index: 1;
+            }
+            
+            .folium-map {
+                width: 100% !important;
+                height: 100% !important;
+            }
+            
+            /* Responsive legend adjustments */
+            @media (max-width: 768px) {
+                /* Make legend smaller on mobile */
+                div[style*="bottom: 50px; right: 50px"] {
+                    bottom: 10px !important;
+                    right: 10px !important;
+                    width: 250px !important;
+                    font-size: 12px !important;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                /* Even smaller on very small screens */
+                div[style*="bottom: 50px; right: 50px"] {
+                    bottom: 5px !important;
+                    right: 5px !important;
+                    width: 200px !important;
+                    font-size: 11px !important;
+                    padding: 10px !important;
+                }
+            }
+            
+            /* Ensure all Leaflet controls are visible */
+            .leaflet-control {
+                z-index: 1000;
+            }
+            
+            /* Make the map take full viewport */
+            .leaflet-container {
+                width: 100vw !important;
+                height: 100vh !important;
+            }
+        </style>
+        '''
+        
+        # Responsive JavaScript for window resize handling
+        responsive_js = '''
+        <script>
+            // Wait for the map to be fully loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                // Give the map time to initialize
+                setTimeout(function() {
+                    // Get the Leaflet map instance
+                    var mapElement = document.querySelector('.folium-map');
+                    if (mapElement && mapElement._leaflet_id) {
+                        var map = window[mapElement._leaflet_id];
+                        
+                        if (map) {
+                            // Initial resize
+                            map.invalidateSize();
+                            
+                            // Add window resize listener with debouncing
+                            var resizeTimeout;
+                            window.addEventListener('resize', function() {
+                                clearTimeout(resizeTimeout);
+                                resizeTimeout = setTimeout(function() {
+                                    if (map) {
+                                        map.invalidateSize();
+                                        console.log('Map resized to fit window');
+                                    }
+                                }, 250);
+                            });
+                            
+                            // Handle orientation change on mobile devices
+                            window.addEventListener('orientationchange', function() {
+                                setTimeout(function() {
+                                    if (map) {
+                                        map.invalidateSize();
+                                        console.log('Map resized for orientation change');
+                                    }
+                                }, 300);
+                            });
+                            
+                            console.log('Responsive map features initialized');
+                        }
+                    }
+                    
+                    // Also try the global map variable approach
+                    if (typeof map_obj !== 'undefined') {
+                        map_obj.invalidateSize();
+                        
+                        var resizeTimeout2;
+                        window.addEventListener('resize', function() {
+                            clearTimeout(resizeTimeout2);
+                            resizeTimeout2 = setTimeout(function() {
+                                map_obj.invalidateSize();
+                            }, 250);
+                        });
+                    }
+                }, 500);
+            });
+            
+            // Fallback: Try to get the map after everything loads
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    var allMaps = [];
+                    
+                    // Try to find all Leaflet map instances
+                    for (var key in window) {
+                        if (window[key] && typeof window[key] === 'object' && window[key]._container) {
+                            allMaps.push(window[key]);
+                        }
+                    }
+                    
+                    // Resize all found maps
+                    allMaps.forEach(function(mapInstance) {
+                        mapInstance.invalidateSize();
+                    });
+                    
+                    if (allMaps.length > 0) {
+                        console.log('Found and resized ' + allMaps.length + ' map(s)');
+                    }
+                }, 1000);
+            });
+        </script>
+        '''
+        
+        # Add responsive features to the map
+        m.get_root().html.add_child(folium.Element(responsive_css))
+        m.get_root().html.add_child(folium.Element(responsive_js))
