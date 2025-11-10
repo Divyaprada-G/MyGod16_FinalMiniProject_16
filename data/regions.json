@@ -1,0 +1,280 @@
+{
+  "states": [
+    {
+      "name": "Karnataka",
+      "code": "KA",
+      "districts": [
+        {
+          "name": "Bagalkot",
+          "code": "BGK",
+          "talukas": ["Bagalkot", "Badami", "Bilgi", "Hunagund"],
+          "center": [16.1697, 75.6947]
+        },
+        {
+          "name": "Ballari (Bellary)",
+          "code": "BLY",
+          "talukas": ["Ballari", "Hospet", "Kudligi", "Sandur"],
+          "center": [15.1394, 76.9214]
+        },
+        {
+          "name": "Bangalore Rural",
+          "code": "BLR",
+          "talukas": ["Devanahalli", "Doddaballapura", "Hosakote", "Nelamangala"],
+          "center": [13.2846, 77.3821]
+        },
+        {
+          "name": "Bangalore Urban",
+          "code": "BLRU",
+          "talukas": ["Bangalore North", "Bangalore South", "Anekal"],
+          "center": [12.9716, 77.5946]
+        },
+        {
+          "name": "Belagavi (Belgaum)",
+          "code": "BGM",
+          "talukas": ["Belgaum", "Bailhongal", "Gokak", "Raybag", "Chikodi"],
+          "center": [15.8497, 74.4977]
+        },
+        {
+          "name": "Bidar",
+          "code": "BDR",
+          "talukas": ["Bidar", "Bhalki", "Basavakalyan", "Humnabad"],
+          "center": [17.9104, 77.5199]
+        },
+        {
+          "name": "Chamarajanagar",
+          "code": "CRG",
+          "talukas": ["Chamarajanagar", "Gundlupet", "Kollegal", "Yelandur"],
+          "center": [11.9262, 76.9437]
+        },
+        {
+          "name": "Chikkaballapur",
+          "code": "CBP",
+          "talukas": ["Chikkaballapur", "Bagepalli", "Chintamani", "Gauribidanur"],
+          "center": [13.4355, 77.7315]
+        },
+        {
+          "name": "Chikkamagaluru",
+          "code": "CMG",
+          "talukas": ["Chikkamagaluru", "Kadur", "Koppa", "Tarikere"],
+          "center": [13.3161, 75.7720]
+        },
+        {
+          "name": "Chitradurga",
+          "code": "CTD",
+          "talukas": ["Chitradurga", "Challakere", "Hiriyur", "Holalkere"],
+          "center": [14.2251, 76.3980]
+        },
+        {
+          "name": "Dakshina Kannada",
+          "code": "DKN",
+          "talukas": ["Mangaluru", "Bantwal", "Belthangady", "Puttur", "Sullia"],
+          "center": [12.8438, 75.2479]
+        },
+        {
+          "name": "Davanagere",
+          "code": "DVG",
+          "talukas": ["Davanagere", "Channagiri", "Harihara", "Honnali"],
+          "center": [14.4644, 75.9218]
+        },
+        {
+          "name": "Dharwad",
+          "code": "DWD",
+          "talukas": ["Dharwad", "Hubli", "Kalghatgi", "Navalgund"],
+          "center": [15.4589, 75.0078]
+        },
+        {
+          "name": "Gadag",
+          "code": "GDG",
+          "talukas": ["Gadag", "Mundargi", "Nargund", "Ron"],
+          "center": [15.4167, 75.6167]
+        },
+        {
+          "name": "Hassan",
+          "code": "HSN",
+          "talukas": ["Hassan", "Alur", "Arakalagudu", "Belur", "Holenarasipura"],
+          "center": [13.0033, 76.1004]
+        },
+        {
+          "name": "Haveri",
+          "code": "HVR",
+          "talukas": ["Haveri", "Byadgi", "Hanagal", "Hirekerur", "Ranebennur"],
+          "center": [14.7951, 75.3991]
+        },
+        {
+          "name": "Kalaburagi (Gulbarga)",
+          "code": "KLB",
+          "talukas": ["Kalaburagi", "Afzalpur", "Aland", "Chincholi", "Sedam"],
+          "center": [17.3297, 76.8343]
+        },
+        {
+          "name": "Kodagu (Coorg)",
+          "code": "KDG",
+          "talukas": ["Madikeri", "Somwarpet", "Virajpet"],
+          "center": [12.3375, 75.8069]
+        },
+        {
+          "name": "Kolar",
+          "code": "KLR",
+          "talukas": ["Kolar", "Bangarapet", "Malur", "Mulbagal", "Srinivaspur"],
+          "center": [13.1358, 78.1299]
+        },
+        {
+          "name": "Koppal",
+          "code": "KPL",
+          "talukas": ["Koppal", "Gangavathi", "Kushtagi", "Yelburga"],
+          "center": [15.3514, 76.1545]
+        },
+        {
+          "name": "Mandya",
+          "code": "MND",
+          "talukas": ["Mandya", "K.R. Pet", "Maddur", "Malavalli", "Pandavapura"],
+          "center": [12.5244, 76.8958]
+        },
+        {
+          "name": "Mysuru",
+          "code": "MYS",
+          "talukas": ["Mysuru", "H.D. Kote", "Periyapatna", "Hunsur", "K.R. Nagar"],
+          "center": [12.2958, 76.6394]
+        },
+        {
+          "name": "Raichur",
+          "code": "RCH",
+          "talukas": ["Raichur", "Devadurga", "Lingasugur", "Manvi", "Sindhnur"],
+          "center": [16.2076, 77.3463]
+        },
+        {
+          "name": "Ramanagara",
+          "code": "RMN",
+          "talukas": ["Ramanagara", "Channapatna", "Kanakapura", "Magadi"],
+          "center": [12.7177, 77.2827]
+        },
+        {
+          "name": "Shivamogga (Shimoga)",
+          "code": "SHV",
+          "talukas": ["Shivamogga", "Bhadravati", "Hosanagar", "Sagar", "Sorab"],
+          "center": [13.9299, 75.5681]
+        },
+        {
+          "name": "Tumakuru (Tumkur)",
+          "code": "TMK",
+          "talukas": ["Tumakuru", "Chiknayakanhalli", "Gubbi", "Kunigal", "Tiptur"],
+          "center": [13.3379, 77.1006]
+        },
+        {
+          "name": "Udupi",
+          "code": "UDP",
+          "talukas": ["Udupi", "Kundapura", "Karkala"],
+          "center": [13.3409, 74.7421]
+        },
+        {
+          "name": "Uttara Kannada",
+          "code": "UTK",
+          "talukas": ["Karwar", "Ankola", "Bhatkal", "Honnavar", "Kumta", "Sirsi"],
+          "center": [14.7937, 74.6869]
+        },
+        {
+          "name": "Vijayapura (Bijapur)",
+          "code": "VJP",
+          "talukas": ["Vijayapura", "Basavana Bagevadi", "Indi", "Muddebihal", "Sindgi"],
+          "center": [16.8302, 75.7100]
+        },
+        {
+          "name": "Vijayanagara",
+          "code": "VJN",
+          "talukas": ["Hosapete", "Hagaribommanahalli", "Hoovina Hadagali", "Kottur", "Kudligi"],
+          "center": [15.2689, 76.3866]
+        },
+        {
+          "name": "Yadgir",
+          "code": "YDG",
+          "talukas": ["Yadgir", "Shahapur", "Shorapur"],
+          "center": [16.7700, 77.1380]
+        }
+      ]
+    },
+    {
+      "name": "Maharashtra",
+      "code": "MH",
+      "districts": [
+        {
+          "name": "Pune",
+          "code": "PUN",
+          "talukas": ["Pune City", "Haveli", "Mulshi", "Mawal"],
+          "center": [18.5204, 73.8567]
+        },
+        {
+          "name": "Nagpur",
+          "code": "NGP",
+          "talukas": ["Nagpur Urban", "Nagpur Rural", "Kamptee"],
+          "center": [21.1458, 79.0882]
+        },
+        {
+          "name": "Nashik",
+          "code": "NSK",
+          "talukas": ["Nashik", "Igatpuri", "Dindori", "Peth"],
+          "center": [19.9975, 73.7898]
+        }
+      ]
+    },
+    {
+      "name": "Tamil Nadu",
+      "code": "TN",
+      "districts": [
+        {
+          "name": "Coimbatore",
+          "code": "CBE",
+          "talukas": ["Coimbatore North", "Coimbatore South", "Pollachi", "Sulur"],
+          "center": [11.0168, 76.9558]
+        },
+        {
+          "name": "Madurai",
+          "code": "MDU",
+          "talukas": ["Madurai North", "Madurai South", "Melur", "Vadipatti"],
+          "center": [9.9252, 78.1198]
+        },
+        {
+          "name": "Thanjavur",
+          "code": "TNJ",
+          "talukas": ["Thanjavur", "Kumbakonam", "Papanasam", "Pattukkottai"],
+          "center": [10.7870, 79.1378]
+        }
+      ]
+    },
+    {
+      "name": "Uttar Pradesh",
+      "code": "UP",
+      "districts": [
+        {
+          "name": "Lucknow",
+          "code": "LKO",
+          "talukas": ["Lucknow Sadar", "Mohanlalganj", "Malihabad", "Bakshi Ka Talab"],
+          "center": [26.8467, 80.9462]
+        },
+        {
+          "name": "Varanasi",
+          "code": "VNS",
+          "talukas": ["Varanasi Sadar", "Pindra", "Chiraigaon"],
+          "center": [25.3176, 82.9739]
+        }
+      ]
+    },
+    {
+      "name": "Punjab",
+      "code": "PB",
+      "districts": [
+        {
+          "name": "Ludhiana",
+          "code": "LDH",
+          "talukas": ["Ludhiana East", "Ludhiana West", "Khanna", "Payal"],
+          "center": [30.9010, 75.8573]
+        },
+        {
+          "name": "Amritsar",
+          "code": "ATQ",
+          "talukas": ["Amritsar-I", "Amritsar-II", "Ajnala", "Tarn Taran"],
+          "center": [31.6340, 74.8723]
+        }
+      ]
+    }
+  ]
+}

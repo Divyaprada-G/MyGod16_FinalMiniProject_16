@@ -1,0 +1,48 @@
+{
+  "crop_types": [
+    {
+      "id": 0,
+      "name": "Paddy/Rice",
+      "color": "#4CAF50",
+      "description": "Rice cultivation areas, typically in wet regions",
+      "typical_ndvi": [0.5, 0.8],
+      "season": ["Kharif", "Rabi"]
+    },
+    {
+      "id": 1,
+      "name": "Millet/Pulses",
+      "color": "#FFC107",
+      "description": "Millet, pulses, and other grain crops",
+      "typical_ndvi": [0.3, 0.6],
+      "season": ["Kharif", "Rabi"]
+    },
+    {
+      "id": 2,
+      "name": "Cash Crops",
+      "color": "#8D6E63",
+      "description": "Cotton, sugarcane, and other commercial crops",
+      "typical_ndvi": [0.4, 0.7],
+      "season": ["Kharif"]
+    },
+    {
+      "id": 3,
+      "name": "Fallow/Barren",
+      "color": "#9E9E9E",
+      "description": "Bare land, fallow fields, or non-agricultural areas",
+      "typical_ndvi": [0.0, 0.3],
+      "season": ["Year-round"]
+    }
+  ],
+  "seasons": {
+    "kharif": {
+      "name": "Kharif",
+      "months": [6, 7, 8, 9, 10],
+      "description": "Monsoon season crops (June-October)"
+    },
+    "rabi": {
+      "name": "Rabi",
+      "months": [11, 12, 1, 2, 3],
+      "description": "Winter season crops (November-March)"
+    }
+  }
+}

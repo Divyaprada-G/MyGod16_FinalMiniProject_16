@@ -1,0 +1,97 @@
+### 🧭 Overall Architecture (from the document)
+
+*Flow:*
+User Input → Map Interface → GEE Handler → Preprocessing → Model Predictor → Map Generator → Dashboard Visualization
+
+---
+
+## 1️⃣ Dataset Handling
+
+*Files involved:*
+
+* gee_handler.py
+
+  * Fetches Sentinel-2 satellite imagery using *Google Earth Engine (GEE)*.
+  * Performs *NDVI extraction* (Normalized Difference Vegetation Index), the main dataset feature.
+  * Handles cloud masking, compositing, and seasonal filtering (so this includes part of preprocessing).
+* *Training Data:* Public GEE datasets + labeled crop polygons (mentioned in doc).
+
+*Summary:*
+
+> The dataset isn’t stored locally; it’s fetched dynamically from GEE based on region selection.
+> For offline demos, pre-downloaded sample data may exist in a data/ folder.
+
+---
+
+## 2️⃣ Preprocessing
+
+*Main file:* gee_handler.py
+*Functions likely include:*
+
+* Cloud masking
+* Percentile compositing
+* NDVI time-series extraction
+* Temporal filtering for seasonal data
+* Feature extraction (NDVI median, percentiles, temporal texture)
+
+*Purpose:* Clean and prepare satellite data before feeding it into the model.
+
+---
+
+## 3️⃣ Model Training
+
+*Main file:* (done previously, not part of the web app runtime)
+
+* Likely train_model.py or within a Jupyter notebook not shown in deployment repo.
+* The trained model is saved as crop_classifier.pkl.
+
+*Details from doc:*
+
+* Algorithm: *Scikit-learn Random Forest*
+* Features: NDVI-based statistics
+* Classes:
+
+  * Paddy/Rice (Green)
+  * Millet/Pulses (Yellow)
+  * Cash Crops (Brown)
+  * Fallow/Barren (Gray)
+* Target Accuracy: >90%
+
+*Purpose:* Train the Random Forest classifier once; the .pkl model is then used for predictions.
+
+---
+
+## 4️⃣ Prediction (Inference)
+
+*Main file:* model_predictor.py
+
+* Loads the trained model (crop_classifier.pkl).
+* Runs model.predict() or model.predict_proba() on the processed NDVI features.
+* Generates labeled crop maps for the region.
+
+*Connected through Flask API:*
+
+* Endpoint /api/analyze triggers this module after preprocessing.
+* Endpoint /api/results returns predictions to frontend.
+
+---
+
+## 5️⃣ Visualization and Output
+
+*Main file:* map_generator.py
+
+* Converts predictions into *color-coded map overlays*.
+* Uses *Leaflet / Chart.js* for interactive display.
+* Handles CSV/PDF export (/api/download endpoint).
+
+---
+
+### 📁 Summary Table of Where Each Stage Happens
+
+| Stage                      | File                         | Description                            |
+| -------------------------- | ---------------------------- | -------------------------------------- |
+| *Dataset Fetching*       | gee_handler.py             | Gets satellite NDVI data from GEE      |
+| *Preprocessing*          | gee_handler.py             | Cloud masking, compositing, filtering  |
+| *Model Training*         | train_model.py (offline) | Builds and saves crop_classifier.pkl |
+| *Model Prediction*       | model_predictor.py         | Loads model, predicts crop type        |
+| *Visualization / Output* | map_generator.py, app.py | Generates maps, charts, reports        |
